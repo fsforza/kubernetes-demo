@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - KubeDemoApplication",
+            "request": "launch",
+            "mainClass": "com.kubernetes.demo.kubedemo.KubeDemoApplication",
+            "projectName": "kube-demo"
+        }
+    ]
+}
