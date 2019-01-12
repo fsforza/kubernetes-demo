@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.kubernetes.demo</groupId>
 	<artifactId>kube-demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>kube-demo</name>
 	<description>Kubernetes Demo project for Spring Boot</description>
 
