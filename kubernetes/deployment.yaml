@@ -30,6 +30,11 @@ spec:
           #   value: dev
           # - name: SPRING_CONFIG_LOCATION
           #   value: classpath:application.properties,file:/home/kube-demo/config/
+          # - name: SPRING_DATASOURCE_PASSWORD
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: kube-demo
+          #       key: mysql-password
           ports:
             - name: http
               containerPort: 8080
