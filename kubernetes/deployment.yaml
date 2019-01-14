@@ -29,13 +29,13 @@ spec:
           # - name: SPRING_PROFILES_ACTIVE
           #   value: dev
           # - name: SPRING_CONFIG_LOCATION
-          #   value: classpath:application.properties
+          #   value: classpath:application.properties,file:/home/kube-demo/config
           ports:
             - name: http
               containerPort: 8080
               protocol: TCP
       #     volumeMounts:
-      #       - mountPath: /opt/configserver-repo
+      #       - mountPath: /home/kube-demo/config
       #         name: kube-demo
       # volumes:
       # - configMap:
