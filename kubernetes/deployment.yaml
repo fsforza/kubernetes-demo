@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: kube-demo
+  namespace: demo
+  labels:
+    app: kube-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-demo
+  template:
+    metadata:
+      labels:
+        app: kube-demo
+    spec:
+      containers:
+        - name: kube-demo
+          image: kube-demo:1.0
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "1000m"
+          # env:
+          # - name: SPRING_PROFILES_ACTIVE
+          #   value: dev
+          # - name: SPRING_CONFIG_LOCATION
+          #   value: classpath:application.properties
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+      #     volumeMounts:
+      #       - mountPath: /opt/configserver-repo
+      #         name: kube-demo
+      # volumes:
+      # - configMap:
+      #     name: kube-demo
+      #   name: kube-demo
+      
