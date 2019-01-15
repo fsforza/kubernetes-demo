@@ -46,4 +46,3 @@ spec:
       # - configMap:
       #     name: kube-demo
       #   name: kube-demo
-      
