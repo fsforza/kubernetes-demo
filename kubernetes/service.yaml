@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: taskmanager
+    app: kube-demo
   name: kube-demo
   namespace: demo
 spec:
