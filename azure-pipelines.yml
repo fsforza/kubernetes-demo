@@ -29,8 +29,10 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     goals: 'clean dependency-check:aggregate'
+    publishJUnitResults: false
   displayName: 'OWASP Dependency Check'
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish OWASP Dependency Check Report'
   inputs:
     ArtifactName: 'OWASP Dependency Check Report'
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/target/dependency-check'
+    PathtoPublish: '$(Build.SourcesDirectory)/target/dependency-check'
