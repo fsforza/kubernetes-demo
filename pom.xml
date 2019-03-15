@@ -17,6 +17,7 @@
 		<java.version>1.8</java.version>
 		<owaspdc.version>4.0.2</owaspdc.version>
 		<dependency.check.report.dir>${project.build.directory}/dependency-check</dependency.check.report.dir>
+		<clover.version>4.3.1</clover.version>
 	</properties>
 
 	<dependencies>
@@ -70,6 +71,11 @@
 					<format>HTML</format>
 					<outputDirectory>${dependency.check.report.dir}</outputDirectory>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.openclover</groupId>
+				<artifactId>clover-maven-plugin</artifactId>
+				<version>${clover.version}</version>
 			</plugin>
 		</plugins>
 	</build>
