@@ -19,7 +19,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean clover:setup clover:clover clover:aggregate'
+    goals: 'clean clover:setup test clover:clover clover:aggregate'
   displayName: 'Unit Tests and Coverage'
 - task: Maven@3
   inputs:
