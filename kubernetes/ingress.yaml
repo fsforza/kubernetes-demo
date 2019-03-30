@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kube-demo
+  namespace: demo
+spec:
+  rules:
+  - host: kube-demo.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kube-demo
+          servicePort: 8080

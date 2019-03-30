@@ -23,29 +23,19 @@ spec:
               memory: "256Mi"
               cpu: "250m"
             limits:
-              memory: "2048Mi"
+              memory: "1024Mi"
               cpu: "1000m"
           ports:
             - name: http
               containerPort: 8080
               protocol: TCP
-          # env:
-          # - name: SPRING_PROFILES_ACTIVE
-          #   value: dev
-          # - name: SPRING_CONFIG_LOCATION
-          #   value: classpath:application.properties,file:/home/kube-demo/config/
-          # - name: SPRING_DATASOURCE_PASSWORD
-          #   valueFrom:
-          #     secretKeyRef:
-          #       name: kube-demo
-          #       key: mysql-password
           # readinessProbe:
           #   httpGet:
           #     path: /actuator/health
           #     port: 8080
           #   initialDelaySeconds: 20
           #   timeoutSeconds: 5
-          #   periodSeconds: 3
+          #   periodSeconds: 5
           #   failureThreshold: 3
           # livenessProbe:
           #   httpGet:
@@ -53,8 +43,18 @@ spec:
           #     port: 8080
           #   initialDelaySeconds: 35
           #   timeoutSeconds: 5
-          #   periodSeconds: 8
+          #   periodSeconds: 10
           #   failureThreshold: 1
+          # env:
+          # - name: SPRING_CONFIG_LOCATION
+          #   value: classpath:application.properties,file:/home/kube-demo/config/
+          # - name: SPRING_PROFILES_ACTIVE
+          #   value: dev
+          # - name: SPRING_DATASOURCE_PASSWORD
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: kube-demo
+          #       key: mysql-password
           # volumeMounts:
           #   - mountPath: /home/kube-demo/config
           #     name: kube-demo
