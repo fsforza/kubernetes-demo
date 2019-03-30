@@ -70,6 +70,7 @@
 				<configuration>
 					<format>HTML</format>
 					<outputDirectory>${dependency.check.report.dir}</outputDirectory>
+					<failOnError>false</failOnError>
 				</configuration>
 			</plugin>
 			<plugin>
