@@ -6,3 +6,4 @@ This tutorial demostrates how to deploy a Java Spring Boot Microservice on Kuber
 
 * [Prerequisites](docs/01-prerequisites.md)
 * [Build the Microservice](docs/02-build.md)
+* [Deploy the Microservice](docs/03-deploy-microservice.md)
