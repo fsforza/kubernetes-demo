@@ -39,5 +39,5 @@ kubectl get pvc -l app=mysql -n demo
 And the related **pv**:
 
 ```bash
-kubectl get pv -l app=mysql -n demo
+kubectl get pv
 ```
