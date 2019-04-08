@@ -21,7 +21,7 @@ Now, you can add the Ingress Rule with:
 kubectl create -f kubernetes/ingress.yaml
 ```
 
-And otbain the create Ingress Rule with:
+And obtain the created Ingress Rule with:
 
 ```bash
 kubectl get ing kube-demo -n demo
