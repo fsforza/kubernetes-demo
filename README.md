@@ -8,3 +8,4 @@ This tutorial demostrates how to deploy a Java Spring Boot Microservice on Kuber
 * [Build the Microservice](docs/02-build.md)
 * [Deploy the Microservice](docs/03-deploy-microservice.md)
 * [Deploy MySQL](docs/04-deploy-mysql.md)
+* [Connect the Microservice to MySQL](docs/05-connect-microservice-mysql.md)
