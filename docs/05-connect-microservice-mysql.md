@@ -161,9 +161,3 @@ And redeploy the microservice with:
 ```bash
 kubectl apply -f kubernetes/deployment.yaml
 ```
-
-And redeploy the microservice with:
-
-```bash
-kubectl apply -f kubernetes/deployment.yaml
-```
