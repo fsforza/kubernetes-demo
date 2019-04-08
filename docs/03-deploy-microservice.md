@@ -49,3 +49,11 @@ You can access to the microservice using [port-forward](https://kubernetes.io/do
 POD=$(kubectl get pods -l app=kube-demo -n demo -o jsonpath='{.items[0].metadata.name}')
 kubectl port-forward $POD 8080:8080 -n demo
 ```
+
+## Invoke Microservice Health Endpoint
+
+After that, you can invoke the health endpoint with
+
+```bash
+curl http://localhost:8080/actuator/health
+```
