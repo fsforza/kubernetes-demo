@@ -12,3 +12,4 @@ This tutorial demostrates how to deploy a Java Spring Boot Microservice on Kuber
 * [Deploy MySQL](docs/04-deploy-mysql.md)
 * [Connect the Microservice to MySQL](docs/05-connect-microservice-mysql.md)
 * [Hide MySQL Password with Kubernetes Secrets](docs/06-secrets.md)
+* [Expose the Microservice with Kubernetes Ingress](docs/07-ingress.md)
