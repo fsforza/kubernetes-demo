@@ -26,3 +26,19 @@ kubectl edit cm kube-demo -n demo
 ```
 
 ## Inject Secret as Environment Variable
+
+To use the Secret, you can inject it as Environment Variable removing the comment from lines into **kubernetes/deployment.yaml** file:
+
+```yaml
+- name: SPRING_DATASOURCE_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: kube-demo
+      key: mysql-password
+```
+
+And redeploy the microservice with:
+
+```bash
+kubectl apply -f kubernetes/deployment.yaml
+```
