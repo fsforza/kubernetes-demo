@@ -112,7 +112,7 @@ env:
   value: dev
 ```
 
-To learn more about how spring boot handles configuration files, you can read the paragraph [Spring Boot Externalized Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) from its official documentation.
+To learn more about how Spring Boot handles configuration files, you can read the paragraph [Spring Boot Externalized Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) from its official documentation.
 
 Then, redeploy the microservice with:
 
