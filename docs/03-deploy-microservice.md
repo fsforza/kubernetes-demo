@@ -43,7 +43,7 @@ kubectl logs -f $POD -n demo
 
 ## Access Pod from outside the cluster
 
-You can access to the microservice using [port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/):
+You can expose the microservice using [port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/):
 
 ```bash
 POD=$(kubectl get pods -l app=kube-demo -n demo -o jsonpath='{.items[0].metadata.name}')
@@ -56,4 +56,34 @@ After that, you can invoke the health endpoint with
 
 ```bash
 curl http://localhost:8080/actuator/health
+```
+
+## Kubernetes Healthchecks
+
+You can use check the microservice health status with Kubernetes [Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).
+You need to decomment lines 32-47 from **deployment.yaml**:
+
+```yaml
+readinessProbe:
+  httpGet:
+    path: /actuator/health
+    port: 8080
+  initialDelaySeconds: 20
+  timeoutSeconds: 5
+  periodSeconds: 5
+  failureThreshold: 3
+livenessProbe:
+  httpGet:
+    path: /actuator/health
+    port: 8080
+  initialDelaySeconds: 35
+  timeoutSeconds: 5
+  periodSeconds: 10
+  failureThreshold: 1
+```
+
+And update the deployment with:
+
+```bash
+kubectl apply -f kubernetes/deployment.yaml
 ```
