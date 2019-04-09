@@ -26,3 +26,20 @@ And obtain the created Ingress Rule with:
 ```bash
 kubectl get ing kube-demo -n demo
 ```
+
+## Set Microservice DNS
+
+The Ingress is exposed at **127.0.0.1** and the applied Ingress Rule uses the domain **kube-demo.local**.
+So you need the set the domain on your DNS server or update *C:\Windows\System32\drivers\etc\hosts* file adding:
+
+```cmd
+127.0.0.1       localhost kube-demo.local
+```
+
+## Invoke Microservice through Ingress
+
+You can invoke the microservice with:
+
+```bash
+curl http://kube-demo.local/actuator/health
+```
