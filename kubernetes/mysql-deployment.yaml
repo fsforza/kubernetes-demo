@@ -25,6 +25,22 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
+        livenessProbe:
+          exec:
+            command: ["sh", "-c", "exec mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"]
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command: ["sh", "-c", "exec mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"]
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: root
