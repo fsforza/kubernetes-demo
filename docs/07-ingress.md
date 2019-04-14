@@ -46,7 +46,7 @@ curl http://kube-demo.local/actuator/health
 
 ## Add Basic Authentication
 
-Ingress can also add Basic Authentication to our pod.
+Ingress can add Basic Authentication to our pod.
 To do that, you need to generic an **auth** file with **htpasswd**
 
 ```bash
@@ -59,7 +59,15 @@ And upload it as Secret:
 kubectl create secret generic ingress-auth --from-file=auth
 ```
 
-Then, remove comments from line 6-8 from file **kubernetes/ingress.yaml** and update ingress rule with:
+Then, remove comments from line 6-8 from file **kubernetes/ingress.yaml**
+
+```yaml
+annotations:
+  nginx.ingress.kubernetes.io/auth-type: basic
+  nginx.ingress.kubernetes.io/auth-secret: ingress-auth
+```
+
+And update ingress rule with:
 
 ```bash
 kubectl apply -f kubernetes/ingress.yaml
@@ -69,4 +77,34 @@ You can invoke the microservice with:
 
 ```bash
 curl -u kube-demo:changeme1 http://kube-demo.local/actuator/health
+```
+
+## Add TLS
+
+Ingress can also expose the microservice in **HTTPS**.
+First, you need to create certificates with **openssl**:
+
+```bash
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./tls.key -out ./tls.crt -subj "/CN=kube-demo.local"
+```
+
+Upload then as Secret with:
+
+```bash
+kubectl create secret tls kube-demo-tls --key ./tls.key --cert ./tls.crt
+```
+
+Then, remove comments from lines 10-13 from file **kubernetes/ingress.yaml**:
+
+```yaml
+tls:
+  - hosts:
+    - kube-demo.local
+    secretName: kube-demo-tls
+```
+
+You can now invoke the microservice in **HTTPS**:
+
+```bash
+curl -k -u kube-demo:changeme1 https://kube-demo.local/actuator/health
 ```

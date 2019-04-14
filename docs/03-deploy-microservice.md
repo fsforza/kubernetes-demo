@@ -61,7 +61,7 @@ curl http://localhost:8080/actuator/health
 ## Kubernetes Healthchecks
 
 You can use the health endpoint to automatically check the microservice status with Kubernetes [Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).
-To do this, you have to remove comments from lines 32-47 from **deployment.yaml**:
+To do this, you have to remove comments from lines 32-47 from **kubernetes/deployment.yaml**:
 
 ```yaml
 readinessProbe:

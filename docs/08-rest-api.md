@@ -1,5 +1,21 @@
 # Microservice REST Api
 
+## Basic Auth
+
+If you have activated Basic Authentication, launch **curl** with:
+
+```bash
+curl -u kube-demo:changeme1 ...
+```
+
+## HTTPS
+
+If you have activated HTTPS with a self-signed certificated, launch **curl** with:
+
+```bash
+curl -k ...
+```
+
 ## Create Person
 
 ```bash
