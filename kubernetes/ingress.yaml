@@ -3,7 +3,14 @@ kind: Ingress
 metadata:
   name: kube-demo
   namespace: demo
+  # annotations:
+  #   nginx.ingress.kubernetes.io/auth-type: basic
+  #   nginx.ingress.kubernetes.io/auth-secret: ingress-auth
 spec:
+  # tls:
+  #   - hosts:
+  #     - kube-demo.local
+  #     secretName: kube-demo-tls
   rules:
   - host: kube-demo.local
     http:
