@@ -109,7 +109,7 @@ and:
 ls -l /home/kube-demo/config
 ```
 
-## Configure the microservice to use application-dev.properties file
+## Configure the microservice to use application-prod.properties file
 
 Now you need to instruct the microservice to use the **application-prod.properties** file.
 To do this, remove the comment from the lines into **kubernetes/deployment.yaml** file:
