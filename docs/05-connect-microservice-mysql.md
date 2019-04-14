@@ -19,6 +19,12 @@ Update microservice version to 1.1:
 ./mvnw -DnewVersion=1.1 -DgenerateBackupPoms=false
 ```
 
+Build the microservice with:
+
+```bash
+./mvnw clean package
+```
+
 And build the new Docker Image with:
 
 ```bash
@@ -41,19 +47,23 @@ kubectl apply -f kubernetes/deployment.yaml
 
 ## Configure the connection to MySQL
 
-### Manual connection
+### Create MySQL Service
 
-You need to get MySQL Pod ip address:
+Create the MySQL [Service](https://kubernetes.io/docs/concepts/services-networking/service/) with:
 
 ```bash
-kubectl get pod -l app=mysql -n demo -o wide
+kubectl apply -f kubernetes/mysql-service.yaml
 ```
 
-Update *spring.datasource.url* property from file **kubernetes/configmap/application-dev.properties, adding the pod ip
+You can obtain the created service with:
+
+```bash
+kubectl get svc -n demo
+```
 
 ### Create ConfigMap
 
-Now, you must upload the properties files as [ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) with:
+You must upload the properties files as [ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) with:
 
 ```bash
 kubectl create cm kube-demo from-file=./kubernetes/configmap -n demo
@@ -101,7 +111,7 @@ ls -l /home/kube-demo/config
 
 ## Configure the microservice to use application-dev.properties file
 
-Now you need to instruct the microservice to use the **application-dev.properties** file.
+Now you need to instruct the microservice to use the **application-prod.properties** file.
 To do this, remove the comment from the lines into **kubernetes/deployment.yaml** file:
 
 ```yaml
@@ -109,7 +119,7 @@ env:
 - name: SPRING_CONFIG_LOCATION
   value: classpath:application.properties,file:/home/kube-demo/config/
 - name: SPRING_PROFILES_ACTIVE
-  value: dev
+  value: prod
 ```
 
 To learn more about how Spring Boot handles configuration files, you can read the paragraph [Spring Boot Externalized Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) from its official documentation.
@@ -125,39 +135,4 @@ After that, check the log to see the connection to MySQL Database:
 ```bash
 POD=$(kubectl get pods -l app=kube-demo -n demo -o jsonpath='{.items[0].metadata.name}')
 kubectl logs -f $POD -n demo
-```
-
-### Automatic Connection
-
-Taking advantage of Kubernetes [Services](https://kubernetes.io/docs/concepts/services-networking/service/), you don't need to know the MySQL Pod ip.
-
-Create the MySQL service with:
-
-```bash
-kubectl apply -f kubernetes/mysql-service.yaml
-```
-
-You can obtain the created service with:
-
-```bash
-kubectl get svc -n demo
-```
-
-The **application-prod.properties** file is already configured to use the service as MySQL hostname into *spring.datasource.url* property:
-
-```properties
-spring.datasource.url=jdbc:mysql://mysql:3306/kube-demo
-```
-
-To use it, instead of **application-dev.properties**, update the lines 51-52 of **kubernetes/deployment.yaml** file:
-
-```yaml
-- name: SPRING_PROFILES_ACTIVE
-  value: prod
-```
-
-And redeploy the microservice with:
-
-```bash
-kubectl apply -f kubernetes/deployment.yaml
 ```
