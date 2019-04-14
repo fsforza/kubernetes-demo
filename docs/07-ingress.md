@@ -27,7 +27,7 @@ And obtain the created Ingress Rule with:
 kubectl get ing kube-demo -n demo
 ```
 
-## Set Microservice DNS
+## Set Microservice Domain
 
 The Ingress is exposed at **127.0.0.1** and the applied Ingress Rule uses the domain **kube-demo.local**.
 So you need the set the domain on your DNS server or update *C:\Windows\System32\drivers\etc\hosts* file adding:
@@ -47,7 +47,7 @@ curl http://kube-demo.local/actuator/health
 ## Add Basic Authentication
 
 Ingress can add Basic Authentication to our pod.
-To do that, you need to generic an **auth** file with **htpasswd**
+To do that, you need to generate an **auth** file with **htpasswd**
 
 ```bash
 htpasswd -bc auth kube-demo changeme1
@@ -73,7 +73,7 @@ And update ingress rule with:
 kubectl apply -f kubernetes/ingress.yaml
 ```
 
-You can invoke the microservice with:
+You can now invoke the microservice with:
 
 ```bash
 curl -u kube-demo:changeme1 http://kube-demo.local/actuator/health
