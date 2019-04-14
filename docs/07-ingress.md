@@ -18,7 +18,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/mast
 Now, you can add the Ingress Rule with:
 
 ```bash
-kubectl create -f kubernetes/ingress.yaml
+kubectl apply -f kubernetes/ingress.yaml
 ```
 
 And obtain the created Ingress Rule with:

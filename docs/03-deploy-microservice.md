@@ -5,7 +5,7 @@
 First of all you have to create the **demo** [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/):
 
 ```bash
-kubectl create -f kubernetes/namespace.yaml
+kubectl apply -f kubernetes/namespace.yaml
 ```
 
 ## Deploy The microservice Docker Image
@@ -13,7 +13,7 @@ kubectl create -f kubernetes/namespace.yaml
 Then, you can deploy the Docker Image with:
 
 ```bash
-kubectl create -f kubernetes/deployment.yaml
+kubectl apply -f kubernetes/deployment.yaml
 ```
 
 You can get the [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) with:

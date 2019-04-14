@@ -22,7 +22,7 @@ kubectl get pv
 Then, you can deploy MySQL Database with:
 
 ```bash
-kubectl create -f kubernetes/mysql-deployment.yaml
+kubectl apply -f kubernetes/mysql-deployment.yaml
 ```
 
 You can get the [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) with:
