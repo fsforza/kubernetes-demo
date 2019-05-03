@@ -11,5 +11,5 @@ You can build the microservice with Maven using the command:
 After that, you can build the Docker Image with:
 
 ```bash
-docker build -t kube-demo:1.0
+docker build -t kube-demo:1.0 .
 ```
