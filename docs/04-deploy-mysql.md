@@ -5,7 +5,13 @@
 The **kubernetes/mysql-pvc.yaml** file creates a Kubernetes [Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 This will be used to persist data stored by MySQL on */var/lib/mysql* folder
 
-You can get the **pvc** with:
+Create the **pvc** with:
+
+```bash
+kubectl apply -f kubernetes/mysql-pvc.yaml
+```
+
+You can retrieve it with:
 
 ```bash
 kubectl get pvc -l app=mysql -n demo
