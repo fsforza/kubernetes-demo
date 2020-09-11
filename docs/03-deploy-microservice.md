@@ -25,7 +25,7 @@ kubectl get deploy -l app=kube-demo -n demo
 The [replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/):
 
 ```bash
-kubectl get deploy -l app=kube-demo -n demo
+kubectl get rs -l app=kube-demo -n demo
 ```
 
 And the [pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/):
